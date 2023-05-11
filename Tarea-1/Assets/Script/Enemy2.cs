@@ -7,6 +7,7 @@ public class Enemy2 : Enemy,IShoot
 {
     public GameObject player;
     public int life;
+    [SerializeField] private float safeDistance = 5f;
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform pointShoot;
     [SerializeField] private float timertoShoot;
@@ -34,19 +35,30 @@ public class Enemy2 : Enemy,IShoot
         }
     }
 
+    private void FixedUpdate()
+    {
+        transform.LookAt(player.transform, transform.forward);
+    }
     public override void Move()
     {
         if (player != null)
         {
-            Vector3 targetPosition = player.transform.position - transform.forward * separationDistance;
-            agent.SetDestination(targetPosition);
+
+            if (Vector3.Distance(transform.position, player.transform.position) < safeDistance)
+            {
+                Vector3 direction = transform.position - player.transform.position;
+                direction = direction.normalized;
+                agent.SetDestination(transform.position + direction * 10f);
+
+            }
         }
     }
 
     public void Shoot()
     {
-        Instantiate(bullet, pointShoot.position, Quaternion.identity);
+        Instantiate(bullet, pointShoot.position, pointShoot.rotation);
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<Damage>() != null)

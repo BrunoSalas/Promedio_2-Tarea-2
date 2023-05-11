@@ -129,3 +129,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   damage: 10
+  scale: 0.5

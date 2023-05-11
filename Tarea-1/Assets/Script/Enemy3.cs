@@ -41,6 +41,10 @@ public class Enemy3 : Enemy, IShoot, iObserver
         }
     }
 
+    public void debug()
+    {
+        Debug.LogError(gameObject.name);
+    }
     private void FixedUpdate()
     {
         if (player != null)

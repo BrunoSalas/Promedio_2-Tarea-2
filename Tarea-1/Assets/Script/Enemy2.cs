@@ -70,6 +70,10 @@ public class Enemy2 : Enemy,IShoot, iObserver
         }
     }
 
+    public void debug()
+    {
+        Debug.LogError(gameObject.name);
+    }
     public void Execute(ISubject subject)
     {
         

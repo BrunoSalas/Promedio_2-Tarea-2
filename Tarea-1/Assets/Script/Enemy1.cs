@@ -25,6 +25,10 @@ public class Enemy1 : Enemy,IShoot,Damage, iObserver
         GameManager.GetInstance().Attach(this);
     }
 
+    public void debug()
+    {
+        Debug.LogError(gameObject.name);
+    }
     void Update()
     {
         Move();

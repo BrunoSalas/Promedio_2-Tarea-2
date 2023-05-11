@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour, ISubject
 {
     private static GameManager instance;
     private float progress;
-    private List<iObserver> Enemy = new List<iObserver>();
+    public List<iObserver> Enemy = new List<iObserver>();
     private float timer;
     public float Progession { get{return progress;}}
     private void Awake()
@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour, ISubject
         timer += Time.deltaTime;
         if(timer >= progress)
         {
+            progress = timer;
             Notify();
         }
     }
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour, ISubject
     public void Attach(iObserver observer)
     {
         Enemy.Add(observer);
+        observer.debug();
     }
 
     public void Remove(iObserver observer)

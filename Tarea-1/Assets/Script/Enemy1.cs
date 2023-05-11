@@ -18,6 +18,7 @@ public class Enemy1 : Enemy,IShoot,Damage, iObserver
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        GameManager.GetInstance().Attach(this);
         //agent.updateRotation = false;
     }
 
@@ -32,6 +33,7 @@ public class Enemy1 : Enemy,IShoot,Damage, iObserver
         }
         if (life <= 0)
         {
+            GameManager.GetInstance().Remove(this);
             Destroy(gameObject);
         }
     }
@@ -66,6 +68,9 @@ public class Enemy1 : Enemy,IShoot,Damage, iObserver
 
     public void Execute(ISubject subject)
     {
-
+        if(subject is GameManager)
+        {
+            moveSpeed = ((GameManager)subject).Progession;
+        }
     }
 }

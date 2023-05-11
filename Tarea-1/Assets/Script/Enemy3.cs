@@ -70,7 +70,7 @@ public class Enemy3 : Enemy, IShoot, iObserver
         }
     }
 
-    public void Execute(iSubject subject)
+    public void Execute(ISubject subject)
     {
 
     }

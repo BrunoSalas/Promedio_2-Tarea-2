@@ -8,6 +8,7 @@ using UnityEngine;
     protected Rigidbody rb;
     [SerializeField] protected float speed;
     [SerializeField] protected int damage;
+    [SerializeField] protected float scale;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();

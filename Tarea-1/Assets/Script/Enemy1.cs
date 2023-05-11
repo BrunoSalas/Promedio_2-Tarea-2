@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy1 : Enemy,IShoot,Damage
+public class Enemy1 : Enemy,IShoot,Damage, iObserver
 {
     public int life;
     public float maxDistance = 5f;
@@ -62,5 +62,10 @@ public class Enemy1 : Enemy,IShoot,Damage
     public int GetDamage(int damage)
     {
         return life - damage;
+    }
+
+    public void Execute(iSubject subject)
+    {
+
     }
 }

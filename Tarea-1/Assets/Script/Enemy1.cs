@@ -64,7 +64,7 @@ public class Enemy1 : Enemy,IShoot,Damage, iObserver
         return life - damage;
     }
 
-    public void Execute(ISubjectUI subject)
+    public void Execute(ISubject subject)
     {
 
     }

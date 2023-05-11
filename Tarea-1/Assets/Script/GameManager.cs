@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour, ISubject
     private List<iObserver> Enemy = new List<iObserver>();
     private float timer;
     public float Progession { get{return progress;}}
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Update()
     {
         timer += Time.deltaTime;

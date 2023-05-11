@@ -15,11 +15,14 @@ public class Enemy1 : Enemy,IShoot,Damage, iObserver
     [SerializeField] private float timertoShoot;
     float timer;
 
-    void Start()
+    void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        GameManager.GetInstance().Attach(this);
         //agent.updateRotation = false;
+    }
+    private void Start()
+    {
+        GameManager.GetInstance().Attach(this);
     }
 
     void Update()

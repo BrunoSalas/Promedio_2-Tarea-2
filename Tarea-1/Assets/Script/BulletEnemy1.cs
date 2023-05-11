@@ -23,7 +23,6 @@ public class BulletEnemy1 : Bullet,iObserver
     }
     private void OnDestroy()
     {
-
         GameManager.GetInstance().Remove(this);
     }
 }

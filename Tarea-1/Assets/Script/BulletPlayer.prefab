@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5594250255708992711}
   - component: {fileID: 1015412127199716511}
   - component: {fileID: 9043819450782290084}
-  - component: {fileID: 7329834534915122584}
+  - component: {fileID: 9012217548731058599}
   m_Layer: 0
-  m_Name: Bullet1 Enemy
+  m_Name: BulletPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7329834534915122584
+--- !u!114 &9012217548731058599
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,3 +130,4 @@ MonoBehaviour:
   speed: 15
   damage: 10
   scale: 1
+  max: {x: 4, y: 4, z: 4}

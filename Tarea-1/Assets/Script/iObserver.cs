@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface iObserver
 {
- public void Execute(ISubject subject);
+    public abstract void Execute(ISubject subject);
 
     public void debug();
 

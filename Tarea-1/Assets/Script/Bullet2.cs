@@ -17,5 +17,4 @@ public class Bullet2 : Bullet
         rb.velocity = direccion * speed;
 
     }
-
 }

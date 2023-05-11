@@ -15,7 +15,6 @@ public class Bullet4 : Bullet
     {
         direction = transform.forward;
     }
-
     private void FixedUpdate()
     {
         if (!back)

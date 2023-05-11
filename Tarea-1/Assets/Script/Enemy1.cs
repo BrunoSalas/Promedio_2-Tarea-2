@@ -13,10 +13,12 @@ public class Enemy1 : Enemy,IShoot,Damage, iObserver
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform pointShoot;
     [SerializeField] private float timertoShoot;
+    Player player;
     float timer;
 
     void Awake()
     {
+        player = FindObjectOfType<Player>();
         agent = GetComponent<NavMeshAgent>();
         //agent.updateRotation = false;
     }
@@ -44,24 +46,15 @@ public class Enemy1 : Enemy,IShoot,Damage, iObserver
             Destroy(gameObject);
         }
     }
-        
+    private void FixedUpdate()
+    {
+       transform.LookAt(player.transform, transform.forward);
+    }
+
     public override void Move()
     {
-        if (!agent.hasPath || agent.remainingDistance < 0.5f)
-        {
-            randomPoint = Random.insideUnitCircle.normalized * maxDistance;
-            Vector3 targetPosition = new Vector3(randomPoint.x + transform.position.x, transform.position.y, transform.position.z);
-
-            NavMeshHit hit;
-            if (NavMesh.SamplePosition(targetPosition, out hit, 1f, NavMesh.AllAreas))
-            {
-                agent.SetDestination(hit.position);
-            }
-        }
-
-        Vector3 moveDirection = agent.desiredVelocity.normalized;
-        transform.position += moveDirection * moveSpeed * Time.deltaTime;
-        transform.rotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+        Vector3 targetPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z +Time.deltaTime * moveSpeed);
+        transform.position = targetPosition;
     }
 
     public void Shoot()

@@ -7,15 +7,13 @@ public class Enemy3 : Enemy, IShoot, iObserver
 {
     public GameObject player;
     public int life;
-    public float maxDistance = 5f;
-    public float moveSpeed = 20f;
+    public float moveSpeed;
     NavMeshAgent agent;
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform pointShoot;
     [SerializeField] private float timertoShoot;
-    private Vector2 randomPoint;
     float timer;
-    Vector3 destination;
+    bool back = false;
 
     // Start is called before the first frame update
     void Start()
@@ -56,9 +54,23 @@ public class Enemy3 : Enemy, IShoot, iObserver
 
     public override void Move()
     {
-        if (player != null)
+        if (!back)
         {
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + Time.deltaTime * moveSpeed);
+            if (transform.position.z > 27)
+            {
+                back = true;
+            }
 
+        }
+        else
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - Time.deltaTime * moveSpeed);
+            if (transform.position.z < -9)
+            {
+                back = false;
+            }
+                
         }
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy3 : Enemy, IShoot
+public class Enemy3 : Enemy, IShoot, iObserver
 {
     public GameObject player;
     public int life;
@@ -70,5 +70,10 @@ public class Enemy3 : Enemy, IShoot
         {
             life -= collision.gameObject.GetComponent<Damage>().GetDamage();
         }
+    }
+
+    public void Execute(iSubject subject)
+    {
+
     }
 }

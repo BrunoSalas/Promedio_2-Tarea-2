@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour, iSubject
+public class GameManager : MonoBehaviour, ISubject
 {
     private static GameManager instance;
     private float progress;

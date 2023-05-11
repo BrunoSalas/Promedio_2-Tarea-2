@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy2 : Enemy,IShoot
+public class Enemy2 : Enemy,IShoot, iObserver
 {
     public GameObject player;
     public int life;
@@ -37,7 +37,10 @@ public class Enemy2 : Enemy,IShoot
 
     private void FixedUpdate()
     {
-        transform.LookAt(player.transform, transform.forward);
+        if (player != null)
+        {
+            transform.LookAt(player.transform, transform.forward);
+        }
     }
     public override void Move()
     {
@@ -65,5 +68,10 @@ public class Enemy2 : Enemy,IShoot
         {
             life -= collision.gameObject.GetComponent<Damage>().GetDamage();
         }
+    }
+
+    public void Execute(iSubject subject)
+    {
+        
     }
 }
